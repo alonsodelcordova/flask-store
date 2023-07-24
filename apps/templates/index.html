@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% import 'macros.html' as macros %}
+
+{% block title %}
+    {{ super() }}
+    Bienvenido
+{% endblock %}
+
+{% block content %}
+    {% if session['username'] %}
+        <h1>Bienvenido {{session['username'] | capitalize}}</h1>
+        <a href="{{ url_for('Templates.logout') }}">Cerrar sesión</a>
+    {% else %}
+        <a href="{{ url_for('Templates.login') }}">Ir a login</a>
+    {% endif %}
+
+    {% if ip %}
+        <h3>Su ip es {{ip}}</h3>
+    {% else %}
+    <a href="{{ url_for('Templates.inicio') }}">Ir a inicio</a>
+    {% endif %}
+
+    <ul>
+        {% for todo in todos %}
+            {{macros.render_user(todo)}}
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
