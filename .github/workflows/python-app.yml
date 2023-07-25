@@ -37,7 +37,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-        
+
   build_and_pub:
     needs: [run_pub_tests]
     runs-on: [ubuntu-latest]
@@ -55,4 +55,4 @@ jobs:
       - name: Tag last release as latest
         run: docker tag $LOGIN/$NAME:${GITHUB_REF:10} $LOGIN/$NAME:latest
       - name: Push image tag latest to docker.io
-        run: docker push $LOGIN/$NAME:latest
+        run: docker push $LOGIN/$NAME:latest 
