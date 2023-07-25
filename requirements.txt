@@ -7,3 +7,4 @@ flask-restful
 flask-marshmallow
 marshmallow-sqlalchemy
 python-decouple
+gunicorn
